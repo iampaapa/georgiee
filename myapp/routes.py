@@ -1,7 +1,7 @@
 from flask import Blueprint, redirect, request, url_for
 
-from extensions import db
-from models import User
+from .extensions import db
+from .models import User
 
 main = Blueprint('main', __name__)
 
