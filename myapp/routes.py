@@ -107,7 +107,7 @@ def confirm_otp():
     if verification_check.status == "approved":
         # Call /find_user route using phone number
         print("debug here")
-        response = requests.post('https://georgette-backend.onrender.com/find_user', json={"number": number})
+        response = requests.post('/find_user', json={"number": number})
         return response.json(), response.status_code
     else:
         return jsonify({"error": "Invalid OTP"}), 400
