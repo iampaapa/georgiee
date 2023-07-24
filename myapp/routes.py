@@ -7,7 +7,7 @@ import requests
 main = Blueprint('main', __name__)
 
 account_sid = "ACfec16894680f21d334f3d27fbb51fca0"
-auth_token = "412ed2255a3cb7363de8e336ec75a33d"
+auth_token = "6d0e314340d27450a049ca51f332d98f"
 verify_sid = "VAe579e07c7264a6755685f8006ef1b6a2"
 client = Client(account_sid, auth_token)
 
@@ -86,11 +86,9 @@ def send_otp():
     if not user:
         return jsonify({"error": "User not found"}), 404
 
-    verification = client.verify \
-                     .v2 \
-                     .services(verify_sid) \
-                     .verifications \
-                     .create(to=number, channel='sms')
+    verification = client.verify.v2.services(verify_sid) \
+      .verifications \
+      .create(to=verified_number, channel="sms")
 
     return jsonify({"message": "OTP has been sent"}), 200
 
