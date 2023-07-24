@@ -88,7 +88,7 @@ def send_otp():
 
     verification = client.verify.v2.services(verify_sid) \
       .verifications \
-      .create(to=verified_number, channel="sms")
+      .create(to=number, channel="sms")
 
     return jsonify({"message": "OTP has been sent"}), 200
 
