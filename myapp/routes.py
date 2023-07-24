@@ -100,14 +100,13 @@ def confirm_otp():
     if not number or not otp:
         return jsonify({"error": "Phone number and OTP are required"}), 400
     
-    verification_check = client.verify \
-                           .v2 \
-                           .services(verify_sid) \
-                           .verification_checks \
-                           .create(to=number, code=otp)
+    verification_check = client.verify.v2.services(verify_sid) \
+      .verification_checks \
+      .create(to=number, code=otp)
 
     if verification_check.status == "approved":
         # Call /find_user route using phone number
+        print("debug here")
         response = requests.post('https://georgette-backend.onrender.com/find_user', json={"number": number})
         return response.json(), response.status_code
     else:
