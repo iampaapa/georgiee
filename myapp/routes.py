@@ -6,9 +6,9 @@ import requests
 
 main = Blueprint('main', __name__)
 
-account_sid = "ACfec16894680f21d334f3d27fbb51fca0"
-auth_token = "6d0e314340d27450a049ca51f332d98f"
-verify_sid = "VAe579e07c7264a6755685f8006ef1b6a2"
+account_sid = os.environ.get("ACCOUNT_SID")
+auth_token = os.environ.get("AUTH_TOKEN")
+verify_sid = os.environ.get("VERIFY_SID")
 client = Client(account_sid, auth_token)
 
 @main.route('/')
