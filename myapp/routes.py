@@ -105,11 +105,10 @@ def confirm_otp():
       .create(to=number, code=otp)
 
     if verification_check.status == "approved":
-         user = User.query.filter_by(number=number).first()
-        
+        user = User.query.filter_by(number=number).first()
         if not user:
             return jsonify({"error": "User not found"}), 404
-    
+        
         user_data = {
             "username": user.username,
             "dob": user.dob,
